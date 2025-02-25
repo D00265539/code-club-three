@@ -48,7 +48,7 @@ export default function Nav() {
             id="navbar-default"
           >
             <ul className="font-medium flex flex-col p-4 md:p-0 md:flex-row md:space-x-8 md:mt-0">
-              <NavLink title="Index" link="/" />
+              <NavLink title="Indexx" link="/" />
               <NavLink title="Scratch" link="/scratch" />
               <NavLink title="Python" link="/python" />
               <NavLink title="Web" link="/web" />
