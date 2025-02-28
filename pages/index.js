@@ -3,8 +3,9 @@ import Head from 'next/head';
 import Image from 'next/image';
 import Nav from '@/components/Nav';
 import Link from 'next/link';
+import { db } from '@vercel/postgres';
 
-const Index = () => {
+const Index = ({techologyCards}) => {
   return (
     <>
       <Head>
@@ -34,55 +35,50 @@ const Index = () => {
 
             <br/>
             <div id="panels" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-full mx-auto gap-5">
-              <section id="one" className="bg-green-300 px-4 rounded-md mx-2">
+            {technologyCards.map((card) => (
+              <section key={card.id} className={"bg-${card.background_color} px-4 rounded-md mx-2"}>
                 <Image
-                  src="/images/scratch.png"
-                  alt="Scratch logo"
+                  src={card.image_url}
+                  alt={"${card.title} logo"}
                   className="mt-3 rounded-md"
                   width={500}
                   height={500}
                 />
-                <h2 className="font-bold">Scratch</h2>
-                <p>Create animations, apps, and interactive stories by adding code, costumes, and sounds.</p>
-                <Link href="/scratch"><button className="border-solid border-2 px-3 my-2 rounded-md mr-3 border-black">Explore Scratch Projects</button></Link>
-              </section>
-
-              <section id="two" className="bg-blue-300 px-4 rounded-md mx-2">
-                <Image
-                  src="/images/python.png"
-                  alt="Python logo"
-                  className="mt-3 rounded-md"
-                  width={500}
-                  height={500}
-                />
-                <h2 className="font-bold">Python</h2>
-                <p>Make digital art, games, and more while exploring one of the world's most popular programming languages.</p>
-                <Link href="/python"><button className="border-solid border-2 px-3 my-2 rounded-md mr-3 border-black">Explore Python Projects</button></Link>
-              </section>
-
-              <section id="three" className="bg-orange-300 px-4 rounded-md mx-2">
-                <Image
-                  src="/images/web.png"
-                  alt="Web logo"
-                  className="mt-3 rounded-md"
-                  width={500}
-                  height={500}
-                />
-                <h2 className="font-bold">Web design</h2>
-                <p>Build websites and apps by learning HTML, CSS, and JavaScript.</p>
-                <Link href="/web"><button className="border-solid border-2 px-3 my-2 rounded-md mr-3 border-black">Explore Web Projects</button></Link>
-              </section>
-            </div>
-          </article>
-        </main>
-      </div>
+                <h2 className="font-bold">{card.title}</h2>
+                <p>{card.description}</p>
+                <Link href={card.link}>
+                <button className="border-solid border-2 px-3 my-2 rounded-md mr-3 border-black">
+                  Explore {card.title} Projects
+                  </button>
+               </Link>
+            </section>
+          ))}
+        </div>
+     </article>
+   </main>
+ </div>
       
-      <footer>
-        <address>Dublin Road, Dundalk</address>
-      </footer>
-    </div>
-    </>
-  );
+ <footer>
+   <address>Dublin Road, Dundalk</address>
+  </footer>
+</div>
+</>
+);
 };
+
+
+export async function getServerSideProps() {
+  const client = await db.connect();
+
+  const { rows: technologyCards } = await client.sql`
+    SELECT * FROM technology_cards;
+  `;
+
+  return {
+    props: {
+      technologyCards, 
+    },
+  };
+}
 
 export default Index;
