@@ -3,7 +3,7 @@ import Head from 'next/head';
 import Nav from '@/components/Nav';
 import Image from 'next/image';
 
-const Index = () => {
+const Index = ({webCards}) => {
   return (
     <>
       <Head>
@@ -32,40 +32,29 @@ const Index = () => {
             </header>
 
             <br/>
-            <div id="panels" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 w-full mx-auto gap-5">
-              <section id="one" className="bg-green-300 px-4 rounded-md mx-2">
+            <div id="panels" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-full mx-auto gap-5">
+            {webCards.map((card) => (
+              <section key={card.id} className={'bg-${card.background_color} px-4 rounded-md mx-2'}>
                 <Image
-                  src="/images/web-intro.webp"
-                  alt="Web Intro logo"
-                  className="mt-3 rounded-md"
-                  width={700}
-                  height={700}
-                />
-                <h2 className="font-bold">Introduction to Web</h2>
-                <h3 className="font-bold">HTML, CSS and animations</h3>
-                <p>In this introduction to Web Design for beginners, you will learn how to add structure and style to webpages with images, lists, fonts, quotes, links and animation.</p>
-              </section>
-
-              <section id="two" className="bg-blue-300 px-4 rounded-md mx-2">
-               <Image
-                  src="/images/more-web.webp"
-                  alt="More Web logo"
-                  className="mt-3 rounded-md"
-                  width={700}
-                  height={700}
-                />
-                <h2 className="font-bold">More Web</h2>
-                <h3 class="font-bold">HTML, CSS and JavaScript</h3>
-                <p>More Web moves beyond the basics introduced in Introduction to Web. Modern Web Design has turned websites from static and boring walls of information into ways of providing fun and engaging experiences to a user. Take users on a journey and transport them to somewhere completely new!</p>
-              </section>
-            </div>
-          </article>
-        </main>
-      </div>
-      
-      <footer>
-        <address>Dublin Road, Dundalk</address>
-      </footer>
+                  src={card.image_url}
+                 alt={'${card.title} logo'}
+                 className="mt-3 rounded-md"
+                 width={500}
+                 height={500}
+              />
+              <h2 className="font-bold">{card.title}</h2>
+              <h3 className="font-bold">{card.subtitle}</h3>
+               <p>{card.description}</p>
+             </section>
+           ))}
+        </div>
+      </article>
+    </main>
+  </div>
+                 
+  <footer>
+    <address>Dublin Road, Dundalk</address>
+    </footer>
     </div>
     </>
   );

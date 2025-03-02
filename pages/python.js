@@ -3,7 +3,7 @@ import Head from 'next/head';
 import Nav from '@/components/Nav';
 import Image from 'next/image';
 
-const Index = () => {
+const Index = ({pythonCards}) => {
   return (
     <>
       <Head>
@@ -32,39 +32,29 @@ const Index = () => {
             </header>
 
             <br/>
-            <div id="panels" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 w-full mx-auto gap-5">
-              <section id="one" className="bg-green-300 px-4 rounded-md mx-2">
+            <div id="panels" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-full mx-auto gap-5">
+            {pythonCards.map((card) => (
+              <section key={card.id} className={'bg-${card.background_color} px-4 rounded-md mx-2'}>
                 <Image
-                  src="/images/python-intro.webp"
-                  alt="Python logo"
-                  className="mt-3 rounded-md"
-                  width={700}
-                  height={700}
-                />
-                <h2 className="font-bold">Introduction to Python</h2>
-                <h3 class="font-bold">Variables, functions and loops</h3>
-              </section>
-
-              <section id="two" className="bg-blue-300 px-4 rounded-md mx-2">
-               <Image
-                  src="/images/more-python.webp"
-                  alt="More Python logo"
-                  className="mt-3 rounded-md"
-                  width={700}
-                  height={700}
-                />
-                <h2 className="font-bold">More Python</h2>
-                <h3 class="font-bold">Lists, dictionaries and data</h3>
-                <p>More Python moves beyond the basics introduced in introduction to Python. You will learn how to use lists, dictionaries and files to create charts, models and artwork.</p>
-              </section>
-            </div>
-          </article>
-        </main>
-      </div>
-      
-      <footer>
-        <address>Dublin Road, Dundalk</address>
-      </footer>
+                  src={card.image_url}
+                 alt={'${card.title} logo'}
+                 className="mt-3 rounded-md"
+                 width={500}
+                 height={500}
+              />
+              <h2 className="font-bold">{card.title}</h2>
+              <h3 className="font-bold">{card.subtitle}</h3>
+               <p>{card.description}</p>
+             </section>
+           ))}
+        </div>
+      </article>
+    </main>
+  </div>
+                 
+  <footer>
+    <address>Dublin Road, Dundalk</address>
+    </footer>
     </div>
     </>
   );

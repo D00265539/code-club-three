@@ -3,7 +3,7 @@ import Head from 'next/head';
 import Image from 'next/image';
 import Nav from '@/components/Nav';
 import Link from 'next/link';
-import { db } from '@/vercel/postgres';
+import { db } from '@vercel/postgres';
 
 const Index = ({techologyCards}) => {
   return (
@@ -34,12 +34,12 @@ const Index = ({techologyCards}) => {
             </header>
 
             <br/>
-            <div id="panels" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-full mx-auto gap-5">
+            <div id="panels" className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-full mx-auto gap-5'>
             {technologyCards.map((card) => (
               <section key={card.id} className={"bg-${card.background_color} px-4 rounded-md mx-2"}>
                 <Image
                   src={card.image_url}
-                  alt={"${card.title} logo"}
+                  alt={'${card.title} logo'}
                   className="mt-3 rounded-md"
                   width={500}
                   height={500}

@@ -2,8 +2,9 @@ import React from 'react';
 import Head from 'next/head'; 
 import Image from 'next/image';  
 import Nav from '@/components/Nav';
+import { db } from '@vercel/postgres';
 
-const Index = () => {
+const Index = ({scratchCards}) => {
   return (
     <>
       <Head>
@@ -33,52 +34,28 @@ const Index = () => {
 
             <br/>
             <div id="panels" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-full mx-auto gap-5">
-              <section id="one" className="bg-green-300 px-4 rounded-md mx-2">
+            {scratchCards.map((card) => (
+              <section key={card.id} className={'bg-${card.background_color} px-4 rounded-md mx-2'}>
                 <Image
-                  src="/images/scratch-intro.webp"
-                  alt="Scratch Intro logo"
-                  className="mt-3 rounded-md"
-                  width={500}
-                  height={500}
+                 src={card.image_url}
+                 alt={'${card.title} logo'}
+                 className="mt-3 rounded-md"
+                 width={500}
+                 height={500}
                 />
-                <h2 className="font-bold">Introduction to Scratch</h2>
-                <h3 class="font-bold">Sprites, scripts and loops</h3>
-                <p>In this introduction to coding in Scratch for beginners, you will learn how to add code, costumes and sound to sprites as you make animations, a game, and app and a book.</p>
+                <h2 className="font-bold">{card.title}</h2>
+                <h3 className="font-bold">{card.subtitle}</h3>
+                  <p>{card.description}</p>
               </section>
-
-              <section id="two" className="bg-blue-300 px-4 rounded-md mx-2">
-                <Image
-                  src="/images/more-scratch.webp"
-                  alt="More Scratch logo"
-                  className="mt-3 rounded-md"
-                  width={500}
-                  height={500}
-                />
-                <h2 className="font-bold">More Scratch</h2>
-                <h3 class="font-bold">Broadcasts, decisions and variables</h3>
-                <p>More Scratch moves beyond the basics introduced in Introduction to Scratch. You will make apps, games and simluations using messages, broadcasting, if...then, and if...then..else decisions and variables.</p>
-              </section>
-
-              <section id="three" className="bg-orange-300 px-4 rounded-md mx-2">
-                <Image
-                  src="/images/further-scratch.webp"
-                  alt="Web logo"
-                  className="mt-3 rounded-md"
-                  width={500}
-                  height={500}
-                />
-                <h2 className="font-bold">Further Scratch</h2>
-                <h3 class="font-bold">Clones, my blocks and Boolean logic</h3>
-                <p>Further Scratch moves beyond the skills introduced in introductions to Scratch and More Scratch. You will make apps, games, computer generated art and simulations using Boolean Logic, functions, clones and more.</p>
-              </section>
-            </div>
-          </article>
-        </main>
-      </div>
-      
-      <footer>
-        <address>Dublin Road, Dundalk</address>
-      </footer>
+             ))}
+           </div>
+         </article>
+       </main>
+     </div>
+                 
+     <footer>
+      <address>Dublin Road, Dundalk</address>
+     </footer>
     </div>
     </>
   );
