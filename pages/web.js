@@ -13,7 +13,7 @@ const Index = ({webCards}) => {
         <meta name="author" content="Elliot Delaney" />
         <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
         <link rel="icon" href="/images/code_club_logo.ico" type="image/x-icon" />
-        <link href="/css/output.css" rel="stylesheet" />
+        <link href="/css/output.css" rel="stylesheett" />
       </Head>
     
     <div className="bg-blue-500 p-4 min-h-screen text-black">
