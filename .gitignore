@@ -39,9 +39,3 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
-
-# incomplete pages
-admin.js
-login.js
-logout.js
-signup.js
