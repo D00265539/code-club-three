@@ -1,0 +1,28 @@
+todo: make admin page where admins can:
+1: Create events that coders can enter.
+2: Manage other users and admins.
+
+todo: make signup/login page where users can
+1: Login to their accounts if one already exists
+2: Create an account using their email and making a username and password (secure)
+
+Any other page ideas, write down here, maybe have the events be on their own centralised page? 
+Could be hard to implement but maybe could make an increment method for sql whenever a new event is made so it can properly display, if formatted like the main pages.
+
+Once functional, make it so only the admins can see this page.
+Use the database features on vercel to make a users database alongside the object loading one, create test accounts to see if it works.
+Once working implement this database to every page (Could just set it up in the nav to only have to implement it once and have it carry to every page).
+Banned users should not be able to participate in events.
+Coders should only be able to join events.
+Admins can create and join events, manage users and get access to an admin page to do this from.
+Both users and admins should have profile pictures (Set the test users one, pref be able to take in an image and use it as a profile picture for new users).
+Shouldnt be as much of a mess as last time as vercel makes using databases much easier. 
+Any additional features will be helpful, maybe the ability to see and manually remove users who are participating?
+Remember to implement {db} on the new pages and use the next.js alternatives for html features for optimised load times.
+On the admin page I wish to have a menu that displays a list of all users and a search bar to find specific ones, either by email or username, should be able to search both.
+From that menu banning, promoting, demoting should all happen, other menu on that page should be the event creation.
+When logged in replace the login/signup tab with a logout one.
+
+Anything else that comes to mind write below here: 
+{db} will be reserved for the object database so maybe do {userdb} or {sql} for this one.
+Make sure neon supports methods the same way oracle does, else adjust to how neon does it.
