@@ -22,7 +22,21 @@ Remember to implement {db} on the new pages and use the next.js alternatives for
 On the admin page I wish to have a menu that displays a list of all users and a search bar to find specific ones, either by email or username, should be able to search both.
 From that menu banning, promoting, demoting should all happen, other menu on that page should be the event creation.
 When logged in replace the login/signup tab with a logout one.
+Logout page should quickly log the user out and then return to the index page with the user no longer being logged in.
+Give the user some options to change profile picture (delete their previous one or else it will take space), username and password, if username or password, require old password to change (Dont bother with an I forgot my password feature).
 
-Anything else that comes to mind write below here: 
+Lastly make a screencast showing how the app works (or whatever works in my case).
+Initially log in as a user, have two events setup, join one of them and leave that page and return to show database working.
+Next, log out and then log in as an admin, have it join the event before opening.
+Show the admin page, display the list of users and (if added) the search feature.
+Have a user to ban and promote the initial account, log into both later.
+Show the events tab and (if added) the people joining.
+Create a new event (scratch basics lab or something simple), show it on the events page and join it, then back to the admin page to show that you joined.
+Log out and log into the banned user, show their lack of an ability to log in.
+Log out of that one and create a new account, once in join the newest event.
+Show any other features added.
+
+Anything else that comes to mind that isnt immediately as important, write below here: 
 {db} will be reserved for the object database so maybe do {userdb} or {sql} for this one.
 Make sure neon supports methods the same way oracle does, else adjust to how neon does it.
+Also remember to add any previous additions that made you miss points before.

@@ -3,7 +3,6 @@ import Head from 'next/head';
 import Image from 'next/image';
 import Nav from '@/components/Nav';
 import Link from 'next/link';
-import { db } from '@vercel/postgres';
 
 const Index = ({techologyCards}) => {
   return (
@@ -65,20 +64,5 @@ const Index = ({techologyCards}) => {
 </>
 );
 };
-
-
-export async function getServerSideProps() {
-  const client = await db.connect();
-
-  const { rows: technologyCards } = await client.sql`
-    SELECT * FROM technology_cards;
-  `;
-
-  return {
-    props: {
-      technologyCards, 
-    },
-  };
-}
 
 export default Index;

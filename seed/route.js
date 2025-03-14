@@ -196,3 +196,59 @@ async function seedWebCards() {
 
   return webCards;
 }
+
+export async function getServerSideProps() {
+  const client = await db.connect();
+
+  const { rows: technologyCards } = await client.sql`
+    SELECT * FROM technology_cards;
+  `;
+
+  return {
+    props: {
+      technologyCards, 
+    },
+  };
+}
+
+export async function getServerSideProps() {
+  const client = await db.connect();
+
+  const { rows: scratchCards } = await client.sql`
+    SELECT * FROM scratch_cards;
+  `;
+
+  return {
+    props: {
+      scratchCards, 
+    },
+  };
+}
+
+export async function getServerSideProps() {
+  const client = await db.connect();
+
+  const { rows: pythonCards } = await client.sql`
+    SELECT * FROM python_cards;
+  `;
+
+  return {
+    props: {
+      pythonCards, 
+    },
+  };
+}
+
+export async function getServerSideProps() {
+  const client = await db.connect();
+
+  const { rows: webCards } = await client.sql`
+    SELECT * FROM web_cards;
+  `;
+
+  return {
+    props: {
+      webCards, 
+    },
+  };
+}
