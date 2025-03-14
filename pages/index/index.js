@@ -3,6 +3,7 @@ import Head from 'next/head';
 import Image from 'next/image';
 import Nav from '@/components/Nav';
 import Link from 'next/link';
+import technologyCards from '../../seed/route.js'
 
 const Index = ({techologyCards}) => {
   return (

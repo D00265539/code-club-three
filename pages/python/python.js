@@ -2,6 +2,7 @@ import React from 'react';
 import Head from 'next/head';
 import Nav from '@/components/Nav';
 import Image from 'next/image';
+import pythonCards from '../../seed/route.js'
 
 const Index = ({pythonCards}) => {
   return (
