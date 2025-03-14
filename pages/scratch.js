@@ -61,4 +61,18 @@ const Index = ({scratchCards}) => {
   );
 };
 
+export async function getServerSideProps() {
+  const client = await db.connect();
+
+  const { rows: scratchCards } = await client.sql`
+    SELECT * FROM scratch_cards;
+  `;
+
+  return {
+    props: {
+      scratchCards, 
+    },
+  };
+}
+
 export default Index;

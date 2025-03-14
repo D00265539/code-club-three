@@ -2,6 +2,7 @@ import React from 'react';
 import Head from 'next/head';
 import Nav from '@/components/Nav';
 import Image from 'next/image';
+import { db } from '@vercel/postgres';
 
 const Index = ({pythonCards}) => {
   return (
@@ -59,5 +60,19 @@ const Index = ({pythonCards}) => {
     </>
   );
 };
+
+export async function getServerSideProps() {
+  const client = await db.connect();
+
+  const { rows: pythonCards } = await client.sql`
+    SELECT * FROM python_cards;
+  `;
+
+  return {
+    props: {
+      pythonCards, 
+    },
+  };
+}
 
 export default Index;
