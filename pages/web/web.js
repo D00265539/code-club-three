@@ -4,7 +4,7 @@ import Nav from '@/components/Nav';
 import Image from 'next/image';
 import webCards from '../../seed/route.js'
 
-const Index = ({webCards}) => {
+const Index = () => {
   return (
     <>
       <Head>

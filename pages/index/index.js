@@ -5,7 +5,7 @@ import Nav from '@/components/Nav';
 import Link from 'next/link';
 import technologyCards from '../../seed/route.js'
 
-const Index = ({techologyCards}) => {
+const Index = () => {
   return (
     <>
       <Head>

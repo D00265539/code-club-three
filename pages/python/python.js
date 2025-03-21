@@ -4,7 +4,7 @@ import Nav from '@/components/Nav';
 import Image from 'next/image';
 import pythonCards from '../../seed/route.js'
 
-const Index = ({pythonCards}) => {
+const Index = () => {
   return (
     <>
       <Head>

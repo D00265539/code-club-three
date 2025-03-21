@@ -4,7 +4,7 @@ import Image from 'next/image';
 import Nav from '@/components/Nav';
 import scratchCards from '../../seed/route.js'
 
-const Index = ({scratchCards}) => {
+const Index = () => {
   return (
     <>
       <Head>
